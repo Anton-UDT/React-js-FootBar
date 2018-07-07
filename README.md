@@ -141,6 +141,7 @@ export default class MyDocument extends Document {
 And inside your 'index.js' file copy and paste this:
 ```javascript
 import React, { Component } from 'react';
+import "../styles/styles.scss";
 import FootBar from '../components/footBarComp';
 
 export default class extends Component {
@@ -157,8 +158,92 @@ export default class extends Component {
 
 
 ```
-The 'components' folder is where you will store your react comnponents, open that up and create a file called 'footBarComp.js'.
-The 'style' folder is where you will keep your css or scss, we dont have to worry about this at this current time.
+The 'components' folder is where you will store your react comnponents, open that up and create a file called 'footBarComp.js'. Inside that file copy and paste this:
+```javascript
+import React, { Component } from 'react';
+import Link from 'next/link';
+
+function footerChecker(props) {
+    // Setting prop variables
+    const isIndex = props.isIndex;
+    const isSlideshow = props.isSlideshow;
+    const isGallery = props.isGallery;
+    const isArtwork = props.isArtwork;
+
+    //Check to see if component has 'isIndex'
+    if(isIndex) {
+        return <div className="container-fluid border-top border-primary margin-top fixed-bottom back-red bg-white">
+                    <Link href={props.nextPage}>
+                    <div className="d-inline-block pr-3 float-right">
+                        <div className="btn btn-primary btn-circle">
+                            <i className="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    </Link>
+                </div>;
+    }
+    //Check to see if component has 'isSlideshow'
+    else if(isSlideshow) {
+        return <div className="container-fluid border-top border-primary margin-top fixed-bottom back-red bg-white">
+                    <Link href={props.prevPage}>
+                    <div className="d-inline-block pr-3 float-left">
+                        <div className="btn btn-primary btn-circle">
+                            <i className="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    </Link>
+                    <Link href={props.nextPage}>
+                        <div className="d-inline-block pr-3 float-right">
+                            <div className="btn btn-primary btn-circle">
+                                <i className="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </Link>
+                </div>;
+    }
+    //Check to see if component has 'isArtwork'
+    else if(isArtwork) {
+        return <div className="container-fluid border-top border-primary margin-top fixed-bottom back-red bg-white">
+                    <Link href={props.prevPage}>
+                    <div className="d-inline-block pr-3 float-left">
+                        <div className="btn btn-primary btn-circle">
+                            <i className="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    </Link>
+                    <Link href={props.nextPage}>
+                        <div className="d-inline-block pr-3 float-right">
+                            <div className="btn btn-primary btn-circle">
+                                <i className="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </Link>
+                </div>;
+    }
+    //Set default
+    else {
+        return <div className="container-fluid border-top border-primary margin-top fixed-bottom back-red bg-white">
+                    <Link href={props.prevPage}>
+                    <div className="d-inline-block pr-3 float-left">
+                        <div className="btn btn-primary btn-circle">
+                            <i className="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    </Link>
+                </div>;
+    }
+}
+export default class FootBar extends Component {
+    render() {
+        return(
+            <a>
+                {footerChecker(this.props)}
+            </a>
+        );
+    }
+}
+```
+The 'style' folder is where you will keep your css or scss.
 The 'static' folder is where you will store stuff like images or sound files.  
   
 You have now set up your react js enviornment.
