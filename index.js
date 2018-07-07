@@ -7,7 +7,7 @@ export default class extends Component {
     render(){
         return(
             <div>
-                    <h3>This is the index</h3>
+                    <h3>This is the index</h3> 
                     <FootBar isIndex nextPage="page-2" />
             </div>
         );
