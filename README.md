@@ -112,8 +112,53 @@ app.prepare().then(() => {
 })
 ```
 Then create folder called 'pages', 'components', 'style' and 'static'.  
-> The 'pages' folder is where the main webpages for the react app will go, so create a new file inside the folder called 'index.js'.
-> The 'components' folder is where you will store your react comnponents, open that up and create a file called 'footBarComp.js'.
-> The 'style' folder is where you will keep your css or scss, we dont have to worry about this at this current time.
-> The 'static' folder is where you will store stuff like images or sound files.  
+
+The 'pages' folder is where the main webpages for the react app will go, so create a new file inside the folder called 'index.js' and a file called '_document.js'. Inside the '_document' copy and paste this:
+```javascript
+// ./pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document'
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <html>
+        <Head>
+          <title>Artwork App</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
+          <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700" rel="stylesheet" />
+          <link rel="stylesheet" href="/_next/static/style.css" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+And inside your 'index.js' file copy and paste this:
+```javascript
+import React, { Component } from 'react';
+import FootBar from '../components/footBarComp';
+
+export default class extends Component {
+    render(){
+        return(
+            <div>
+                    <h3>This is the index page</h3>
+                    <FootBar isIndex nextPage="gallery" />
+                </div>
+            </div>
+        );
+    }
+}
+
+
+```
+The 'components' folder is where you will store your react comnponents, open that up and create a file called 'footBarComp.js'.
+The 'style' folder is where you will keep your css or scss, we dont have to worry about this at this current time.
+The 'static' folder is where you will store stuff like images or sound files.  
   
+You have now set up your react js enviornment.
