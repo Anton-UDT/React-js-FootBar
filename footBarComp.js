@@ -71,7 +71,7 @@ function footerChecker(props) {
                 </div>;
     }
 }
-export default class FootBar extends Component {
+export default class FootBar extends Component { 
     render() {
         return(
             <a>
