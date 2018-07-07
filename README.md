@@ -14,8 +14,10 @@ Have a button that goes to the previous page,
 Have a button that can do both.
 
 # Technical Notes
-written in Javascript (React-JS).
-
+written in Javascript (React-JS, required).
+Uses Next.js Link (required).
+Uses React-bootstrap.
+Uses Font-Awesome.
   
 # Developer Notes
 Within these three pages, you are able to navigate between different pages while also having the ability to change wether or not you want a button on a specific side or not.
